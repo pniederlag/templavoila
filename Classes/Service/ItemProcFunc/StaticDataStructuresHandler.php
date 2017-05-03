@@ -316,7 +316,7 @@ class StaticDataStructuresHandler
         }
 
         if ($storagePid === 0) {
-            throw new UndefinedStorageFolderException('Storage folder is not defined', 1492703523758);
+            throw new UndefinedStorageFolderException('Storage folder is not defined', 1492703523);
         }
 
         return $storagePid;

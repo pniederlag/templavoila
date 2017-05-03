@@ -54,7 +54,7 @@ class ApiController
             $success = $this->apiService->unlinkElement($unlinkDestinationPointer);
 
             if (!$success) {
-                throw new \RuntimeException('Unlinking the record did not work', 1489603878573);
+                throw new \RuntimeException('Unlinking the record did not work', 1489603878);
             }
         } catch (\Exception $e) {
             $data['hasErrors'] = true;
@@ -85,7 +85,7 @@ class ApiController
             $success = $this->apiService->deleteElement($unlinkDestinationPointer);
 
             if (!$success) {
-                throw new \RuntimeException('Deleting the record did not work', 1493816671811);
+                throw new \RuntimeException('Deleting the record did not work', 1493816671);
             }
         } catch (\Exception $e) {
             $data['hasErrors'] = true;
@@ -123,7 +123,7 @@ class ApiController
             );
 
             if (!$success) {
-                throw new \RuntimeException('Pasting the record did not work', 1489603941001);
+                throw new \RuntimeException('Pasting the record did not work', 1489603941);
             }
 
             $flexformPointers = [];
@@ -142,7 +142,7 @@ class ApiController
             }
 
             if ($newPointer === null) {
-                throw new \RuntimeException('Could not calculate the new element pointer', 1489759321479);
+                throw new \RuntimeException('Could not calculate the new element pointer', 1489759321);
             }
 
             $data['pointer'] = $newPointer;

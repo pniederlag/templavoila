@@ -64,7 +64,7 @@ class HighlightXmlViewHelper extends AbstractViewHelper implements CompilableInt
         $useLineNumbers = (bool)$arguments['useLineNumbers'];
 
         if ((string)$xml === '') {
-            throw new InvalidVariableException('An argument "xml" needs to be provided', 1477218307618);
+            throw new InvalidVariableException('An argument "xml" needs to be provided', 1477218307);
         }
 
         $syntaxHighlightingService = GeneralUtility::makeInstance(SyntaxHighlightingService::class);

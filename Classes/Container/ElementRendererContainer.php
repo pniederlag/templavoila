@@ -95,7 +95,7 @@ class ElementRendererContainer implements ContainerInterface
 
         throw new NotFoundException(
             sprintf('Item with id "%s" could not be found', $id),
-            1481032991067
+            1481032991
         );
     }
 

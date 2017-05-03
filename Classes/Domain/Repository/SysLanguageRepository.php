@@ -77,7 +77,7 @@ class SysLanguageRepository
         if ($pid < 1) {
             throw new \InvalidArgumentException(
                 'Param $uid must be greater than zero',
-                1466505308689
+                1466505308
             );
         }
 

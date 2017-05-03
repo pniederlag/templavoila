@@ -57,7 +57,7 @@ class Sheet
         }
 
         if (!isset($this->contentTreeData['el']['table'])) {
-            throw new Exception('Sheet configuration is not valid', 1478029315398);
+            throw new Exception('Sheet configuration is not valid', 1478029315);
         }
     }
 
@@ -84,7 +84,7 @@ class Sheet
     public function getUid()
     {
         if (!isset($this->contentTreeData['el']['uid'])) {
-            throw new \RuntimeException('uid is not set', 1478029645986);
+            throw new \RuntimeException('uid is not set', 1478029645);
         }
 
         return (int) $this->contentTreeData['el']['uid'];
@@ -97,7 +97,7 @@ class Sheet
     public function getPid()
     {
         if (!isset($this->contentTreeData['el']['pid'])) {
-            throw new \RuntimeException('pid is not set', 1478029485194);
+            throw new \RuntimeException('pid is not set', 1478029485);
         }
 
         return (int) $this->contentTreeData['el']['pid'];
@@ -121,7 +121,7 @@ class Sheet
     public function getContentType()
     {
         if (!isset($this->contentTreeData['el']['CType'])) {
-            throw new \RuntimeException('CType is not set', 1478029917967);
+            throw new \RuntimeException('CType is not set', 1478029917);
         }
 
         return (string) $this->contentTreeData['el']['CType'];

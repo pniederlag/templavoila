@@ -79,7 +79,7 @@ class FileController extends AbstractModuleController implements Configurable
         if (!file_exists($path) || !is_file($path) || ($absolutePath = GeneralUtility::getFileAbsFileName($path)) === '') {
             throw new FileNotFoundException(
                 sprintf('File "%s" not found', $path),
-                1479904333951
+                1479904333
             );
         }
 
@@ -87,7 +87,7 @@ class FileController extends AbstractModuleController implements Configurable
         if ($content === false || $content === '') {
             throw new FileIsEmptyException(
                 sprintf('File "%s" is empty', $path),
-                1479904675357
+                1479904675
             );
         }
 

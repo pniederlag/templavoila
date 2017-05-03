@@ -911,7 +911,7 @@ class ElementController extends AbstractModuleController implements Configurable
         if ((int)$uid <= 0) {
             throw new \InvalidArgumentException(
                 static::getLanguageService()->getLL('errorNoUidFound'),
-                1479981093372
+                1479981093
             );
         }
 
@@ -920,7 +920,7 @@ class ElementController extends AbstractModuleController implements Configurable
         if (!is_array($row)) {
             throw new \LogicException(
                 static::getLanguageService()->getLL('errorNoTOfound'),
-                1479981243520
+                1479981243
             );
         }
 
