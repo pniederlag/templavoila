@@ -1,3 +1,13 @@
+7.6.6 / 2017-05-03
+==================
+
+  * 2017-05-03  54cfea0  [TASK] Escape special HTML characters in any grid colum title (Oliver Eglseder)
+  * 2017-05-03  356118e  [TASK] Allow localization of grid column titles (Oliver Eglseder)
+  * 2017-05-03  245be37  [TASK] Streamline method localizedFFLabel (Alexander Schnitzler)
+  * 2017-05-03  461786e  [BUGFIX] Ajax delete must actually delete record (Alexander Schnitzler)
+  * 2017-05-03  a9a1a18  [BUGFIX] Do not use strict type hints for getFlexFormDS_postProcessDS (Alexander Schnitzler)
+  * 2017-04-21  9ce85c1  [BUGFIX] Always show FCE tab in new element wizard (Alexander Schnitzler)
+
 7.6.5 / 2017-04-21
 ==================
 
