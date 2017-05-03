@@ -972,12 +972,11 @@ class SheetRenderer implements Renderable
      */
     public function localizedFFLabel($label, $hsc)
     {
-        if (substr($label, 0, 4) === 'LLL:') {
+        if (strpos($label, 'LLL:') === 0) {
             $label = static::getLanguageService()->sL($label);
         }
-        $result = htmlspecialchars($label, $hsc);
 
-        return $result;
+        return $hsc ? htmlspecialchars($label) : $label;
     }
 
     /**
