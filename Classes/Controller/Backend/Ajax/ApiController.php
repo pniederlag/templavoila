@@ -54,7 +54,38 @@ class ApiController
             $success = $this->apiService->unlinkElement($unlinkDestinationPointer);
 
             if (!$success) {
-                throw new \RuntimeException('Deleting the record did not work', 1489603878573);
+                throw new \RuntimeException('Unlinking the record did not work', 1489603878573);
+            }
+        } catch (\Exception $e) {
+            $data['hasErrors'] = true;
+            $data['messages'][] = [
+                'title' => 'Exception: ' . $e->getCode(),
+                'message' => $e->getMessage()
+            ];
+        }
+
+        $response->getBody()->write(json_encode($data));
+        return $response->withHeader('Content-Type', 'application/json; charset=utf-8');
+    }
+
+
+    /**
+     * @param ServerRequest $request
+     * @param Response $response
+     * @return \TYPO3\CMS\Core\Http\Message
+     */
+    public function delete(ServerRequest $request, Response $response)
+    {
+        $data = [];
+        $data['hasErrors'] = false;
+        $data['messages'] = [];
+
+        try {
+            $unlinkDestinationPointer = $this->apiService->flexform_getPointerFromString($request->getParsedBody()['pointer']);
+            $success = $this->apiService->deleteElement($unlinkDestinationPointer);
+
+            if (!$success) {
+                throw new \RuntimeException('Deleting the record did not work', 1493816671811);
             }
         } catch (\Exception $e) {
             $data['hasErrors'] = true;

@@ -16,6 +16,10 @@ return [
         'path' => '/templavoila/api/unlink',
         'target' => \Schnitzler\Templavoila\Controller\Backend\Ajax\ApiController::class. '::unlink'
     ],
+    'TemplaVoila::Api::Delete' => [
+        'path' => '/templavoila/api/delete',
+        'target' => \Schnitzler\Templavoila\Controller\Backend\Ajax\ApiController::class. '::delete'
+    ],
     'TemplaVoila::Api::Paste' => [
         'path' => '/templavoila/api/paste',
         'target' => \Schnitzler\Templavoila\Controller\Backend\Ajax\ApiController::class. '::paste'

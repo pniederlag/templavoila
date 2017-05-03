@@ -67,11 +67,12 @@ define(['jquery'], function ($) {
     };
 
     /**
+     * @param string url
      * @param {Object} params
      * @returns {Object}
      */
-    AjaxDataHandler.unlink = function (params) {
-        return $.post(TYPO3.settings.ajaxUrls['TemplaVoila::Api::Unlink'], params);
+    AjaxDataHandler.post = function (url, params) {
+        return $.post(url, params);
     };
 
     return AjaxDataHandler;

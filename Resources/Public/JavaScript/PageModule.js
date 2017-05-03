@@ -160,6 +160,7 @@ define(['jquery',
      */
     PageModule.deleteRecord = function (element) {
         var $anchorElement = $(element);
+        var url = $anchorElement.data('url');
         var pointer = $anchorElement.data('pointer');
         var $iconElement = $anchorElement.find(PageModule.identifier.icon);
         var params = { pointer: pointer };
@@ -168,7 +169,7 @@ define(['jquery',
         PageModule._showSpinnerIcon($iconElement);
 
         // make the AJAX call to toggle the visibility
-        AjaxDataHandler.unlink(params).done(function (result) {
+        AjaxDataHandler.post(url, params).done(function (result) {
             // revert to the old class
             Icons.getIcon('actions-edit-delete', Icons.sizes.small).done(function (icon) {
                 $iconElement.replaceWith(icon);

@@ -831,11 +831,23 @@ class MainController extends AbstractModuleController implements Configurable
             $dataTitleIdentifier = $foreignReferences ? 'deleteRecordWithReferencesMsg' : 'deleteRecordMsg';
             $action = 'delete';
             $iconIdentifier = 'extensions-templavoila-delete';
+            $dataUrl = BackendUtility::getAjaxUrl(
+                'TemplaVoila::Api::Delete',
+                [
+                    'record' => $unlinkPointerString
+                ]
+            );
         } else {
             $titleIdentifier = 'unlinkRecord';
             $dataTitleIdentifier = 'unlinkRecordMsg';
             $action = 'unlink';
             $iconIdentifier = 'extensions-templavoila-unlink';
+            $dataUrl = BackendUtility::getAjaxUrl(
+                'TemplaVoila::Api::Unlink',
+                [
+                    'record' => $unlinkPointerString
+                ]
+            );
         }
 
         $title = static::getLanguageService()->getLL($titleIdentifier);
@@ -862,6 +874,7 @@ class MainController extends AbstractModuleController implements Configurable
             title="' . $title . '"
             data-title="' . $dataTitle . '"
             data-pointer="' . $unlinkPointerString . '"
+            data-url="' . $dataUrl . '"
             href="' . $url . '"
         >' . $linkDelete . '</a>';
 
