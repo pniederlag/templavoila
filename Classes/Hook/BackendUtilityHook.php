@@ -26,7 +26,7 @@ class BackendUtilityHook
      * @param string $table
      * @param string $fieldName
      */
-    public function getFlexFormDS_postProcessDS(&$dataStructArray, array $conf, array $row, $table, $fieldName)
+    public function getFlexFormDS_postProcessDS(&$dataStructArray, $conf, $row, $table, $fieldName)
     {
         if ($fieldName === 'tx_templavoila_flex' && !is_array($dataStructArray)) {
             $dataStructArray = [];
