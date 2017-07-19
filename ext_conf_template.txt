@@ -7,6 +7,9 @@ enable.selectDataStructure = 0
 # cat=basic/enable; type=boolean; label=LLL:EXT:templavoila/Resources/Private/Language/template_conf.xlf:enable.renderFCEHeader
 enable.renderFCEHeader = 0
 
+# cat=basic/enable; type=boolean; label=LLL:EXT:templavoila/Resources/Private/Language/template_conf.xlf:enable.compatibility6Mode
+enable.compatibility6Mode = 0
+
 # cat=static DS; type=boolean; label=LLL:EXT:templavoila/Resources/Private/Language/template_conf.xlf:staticDS.enable
 staticDS.enable = 0
 

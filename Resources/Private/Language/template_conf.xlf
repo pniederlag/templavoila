@@ -12,6 +12,9 @@
             <trans-unit xml:space="preserve" id="enable.renderFCEHeader">
                 <source>Enable Header for FCE's:If this checkbox is checked the header of Content Element type FCE will be rendered like headers of other Content Elements.</source>
             </trans-unit>
+            <trans-unit xml:space="preserve" id="enable.compatibility6Mode">
+                <source>Enable compatibility6 mode. This will enable translation of flexforms but other flexform handling is not stable.</source>
+            </trans-unit>
             <trans-unit xml:space="preserve" id="staticDS.enable">
                 <source>Enable static files for data structures:Experimental! Use Static DS Conversion Wizard below!</source>
             </trans-unit>

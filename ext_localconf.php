@@ -152,58 +152,60 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['inlineParentR
     ],
 ];
 
-// Register language aware flex form handling in FormEngine
-// Register render elements
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1489490491267] = [
-    'nodeName' => 'flex',
-    'priority' => 50,
-    'class' => \Schnitzler\Templavoila\Form\Container\FlexFormEntryContainer::class
-];
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1489490494732] = [
-    'nodeName' => 'flexFormNoTabsContainer',
-    'priority' => 50,
-    'class' => \Schnitzler\Templavoila\Form\Container\FlexFormNoTabsContainer::class
-];
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1489490496647] = [
-    'nodeName' => 'flexFormTabsContainer',
-    'priority' => 50,
-    'class' => \Schnitzler\Templavoila\Form\Container\FlexFormTabsContainer::class
-];
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1489490498553] = [
-    'nodeName' => 'flexFormElementContainer',
-    'priority' => 50,
-    'class' => \Schnitzler\Templavoila\Form\Container\FlexFormElementContainer::class
-];
+if ((int)$_EXTCONF['enable.']['compatibility6Mode'] === 1) {
+    // Register language aware flex form handling in FormEngine
+    // Register render elements
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1489490491267] = [
+        'nodeName' => 'flex',
+        'priority' => 50,
+        'class' => \Schnitzler\Templavoila\Form\Container\FlexFormEntryContainer::class
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1489490494732] = [
+        'nodeName' => 'flexFormNoTabsContainer',
+        'priority' => 50,
+        'class' => \Schnitzler\Templavoila\Form\Container\FlexFormNoTabsContainer::class
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1489490496647] = [
+        'nodeName' => 'flexFormTabsContainer',
+        'priority' => 50,
+        'class' => \Schnitzler\Templavoila\Form\Container\FlexFormTabsContainer::class
+    ];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1489490498553] = [
+        'nodeName' => 'flexFormElementContainer',
+        'priority' => 50,
+        'class' => \Schnitzler\Templavoila\Form\Container\FlexFormElementContainer::class
+    ];
 
-// Unregister stock TcaFlexProcess data provider and substitute with own data provider at the same position
-unset($GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['inlineParentRecord'][TYPO3\CMS\Backend\Form\FormDataProvider\TcaFlexProcess::class]);
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['inlineParentRecord'][\Schnitzler\Templavoila\Form\FormDataProvider\TcaFlexProcess::class] = [
-    'depends' => [
-        TYPO3\CMS\Backend\Form\FormDataProvider\TcaFlexPrepare::class
-    ],
-    'before' => [
-        \TYPO3\CMS\Backend\Form\FormDataProvider\TcaRadioItems::class
-    ]
-];
+    // Unregister stock TcaFlexProcess data provider and substitute with own data provider at the same position
+    unset($GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['inlineParentRecord'][TYPO3\CMS\Backend\Form\FormDataProvider\TcaFlexProcess::class]);
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['inlineParentRecord'][\Schnitzler\Templavoila\Form\FormDataProvider\TcaFlexProcess::class] = [
+        'depends' => [
+            TYPO3\CMS\Backend\Form\FormDataProvider\TcaFlexPrepare::class
+        ],
+        'before' => [
+            \TYPO3\CMS\Backend\Form\FormDataProvider\TcaRadioItems::class
+        ]
+    ];
 
-if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('compatibility6')) {
-    unset($GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRecord']['TYPO3\CMS\Compatibility6\Form\FormDataProvider\TcaFlexProcess']);
+    if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('compatibility6')) {
+        unset($GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRecord']['TYPO3\CMS\Compatibility6\Form\FormDataProvider\TcaFlexProcess']);
+    }
+    unset($GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRecord'][TYPO3\CMS\Backend\Form\FormDataProvider\TcaFlexProcess::class]);
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRecord'][\Schnitzler\Templavoila\Form\FormDataProvider\TcaFlexProcess::class] = [
+        'depends' => [
+            TYPO3\CMS\Backend\Form\FormDataProvider\TcaFlexPrepare::class
+        ],
+        'before' => [
+            \TYPO3\CMS\Backend\Form\FormDataProvider\TcaRadioItems::class
+        ]
+    ];
+
+    // Register "XCLASS" of FlexFormTools for language parsing
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools::class]['className'] = \Schnitzler\Templavoila\Configuration\FlexForm\FlexFormTools::class;
+
+    // Language diff updating in flex
+    $GLOBALS['TYPO3_CONF_VARS']['BE']['flexFormXMLincludeDiffBase'] = true;
 }
-unset($GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRecord'][TYPO3\CMS\Backend\Form\FormDataProvider\TcaFlexProcess::class]);
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRecord'][\Schnitzler\Templavoila\Form\FormDataProvider\TcaFlexProcess::class] = [
-    'depends' => [
-        TYPO3\CMS\Backend\Form\FormDataProvider\TcaFlexPrepare::class
-    ],
-    'before' => [
-        \TYPO3\CMS\Backend\Form\FormDataProvider\TcaRadioItems::class
-    ]
-];
-
-// Register "XCLASS" of FlexFormTools for language parsing
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools::class]['className'] = \Schnitzler\Templavoila\Configuration\FlexForm\FlexFormTools::class;
-
-// Language diff updating in flex
-$GLOBALS['TYPO3_CONF_VARS']['BE']['flexFormXMLincludeDiffBase'] = true;
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_befunc.php']['getFlexFormDSClass'][] = \Schnitzler\Templavoila\Hook\BackendUtilityHook::class;
 
