@@ -95,6 +95,7 @@ class FlexFormElementContainer extends AbstractContainer
                             'defaultExtras' => $flexFormFieldArray['defaultExtras'],
                             'onChange' => $flexFormFieldArray['onChange'],
                         ),
+                        'fieldChangeFunc' => $parameterArray['fieldChangeFunc'],
                     );
 
                     $alertMsgOnChange = '';
@@ -109,11 +110,20 @@ class FlexFormElementContainer extends AbstractContainer
                             $alertMsgOnChange = 'if (TBE_EDITOR.checkSubmit(-1)){ TBE_EDITOR.submitForm();}';
                         }
                     }
-                    $fakeParameterArray['fieldChangeFunc'] = $parameterArray['fieldChangeFunc'];
+
                     if ($alertMsgOnChange) {
                         $fakeParameterArray['fieldChangeFunc']['alert'] = $alertMsgOnChange;
                     }
-
+                    $originalFieldName = $parameterArray['itemFormElName'];
+                    $fakeParameterArray['itemFormElName'] = $parameterArray['itemFormElName'] . $flexFormFormPrefix . '[' . $flexFormFieldName . '][vDEF]';
+                    if ($fakeParameterArray['itemFormElName'] !== $originalFieldName) {
+                        // If calculated itemFormElName is different from originalFieldName
+                        // change the originalFieldName in TBE_EDITOR_fieldChanged. This is
+                        // especially relevant for wizards writing their content back to hidden fields
+                        if (!empty($fakeParameterArray['fieldChangeFunc']['TBE_EDITOR_fieldChanged'])) {
+                            $fakeParameterArray['fieldChangeFunc']['TBE_EDITOR_fieldChanged'] = str_replace($originalFieldName, $fakeParameterArray['itemFormElName'], $fakeParameterArray['fieldChangeFunc']['TBE_EDITOR_fieldChanged']);
+                        }
+                    }
                     $fakeParameterArray['onFocus'] = $parameterArray['onFocus'];
                     $fakeParameterArray['label'] = $parameterArray['label'];
                     $fakeParameterArray['itemFormElName'] = $parameterArray['itemFormElName'] . $flexFormFormPrefix . '[' . $flexFormFieldName . '][' . $lkey . ']';
