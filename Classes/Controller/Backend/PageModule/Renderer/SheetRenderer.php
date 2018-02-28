@@ -133,7 +133,7 @@ class SheetRenderer implements Renderable
 
             return $this->renderGrid($sheet, PermissionUtility::getCompiledPermissions($pid));
         } catch (\Exception $e) {
-            return '';
+            return ''. $e->getMessage();
         }
     }
 
