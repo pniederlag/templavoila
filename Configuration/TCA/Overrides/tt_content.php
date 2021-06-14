@@ -130,7 +130,7 @@ call_user_func(function () {
     $additionalCTypeItem = [
         'LLL:EXT:templavoila/Resources/Private/Language/locallang_db.xlf:tt_content.CType_pi1',
         'templavoila_pi1',
-        'templavoila-type-fce'
+        'extensions-templavoila-type-fce'
     ];
 
     $existingCTypeItems = (array)$GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'];

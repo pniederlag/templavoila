@@ -620,7 +620,7 @@ class TemplateObjectController extends AbstractModuleController implements Linka
         if ((int)$uid <= 0) {
             throw new \InvalidArgumentException(
                 static::getLanguageService()->getLL('errorNoUidFound'),
-                1479981093372
+                1479981093
             );
         }
 
@@ -629,7 +629,7 @@ class TemplateObjectController extends AbstractModuleController implements Linka
         if (!is_array($row)) {
             throw new \LogicException(
                 static::getLanguageService()->getLL('errorNoTOfound'),
-                1479981243520
+                1479981243
             );
         }
 
@@ -646,7 +646,7 @@ class TemplateObjectController extends AbstractModuleController implements Linka
         if (!file_exists($fileName) || !is_file($fileName)) {
             throw new \LogicException(
                 sprintf(static::getLanguageService()->getLL('errorFileNotFound'), $templateObjectRecord['fileref']),
-                1479982767518
+                1479982767
             );
         }
 

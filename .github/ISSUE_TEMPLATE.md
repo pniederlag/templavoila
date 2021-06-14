@@ -1,11 +1,12 @@
-| Q                    | A
-| -------------------- | -----
-| Bug report?          | yes/no
-| Feature request?     | yes/no
-| PHP version          | x.y.z
-| TYPO3 version        | x.y.z
-| TemplaVoilà version  | x.y.z or branch
-
+| Q                           | A
+| --------------------------- | -----
+| Bug report?                 | yes/no
+| Feature request?            | yes/no
+| PHP version                 | x.y.z
+| TYPO3 version               | x.y.z
+| TemplaVoilà version         | x.y.z or branch
+| compatiblity6 installed?    | yes/no
+| compatiblity6 mode enabled? | yes/no
 
 ### Actual behaviour
 

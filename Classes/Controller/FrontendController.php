@@ -354,7 +354,7 @@ class FrontendController extends AbstractPlugin
                 throw new ObjectNotFoundException('
                     Couldn\'t find a Data Structure set for table/row "' . $table . ':' . $row['uid'] . '".
                     Please select a Data Structure and Template Object first.',
-                    1480960877668
+                    1480960877
                 );
             }
 
@@ -409,7 +409,7 @@ class FrontendController extends AbstractPlugin
                     You haven\'t selected a Template Object yet for table/uid "' . $table . '/' . $row['uid'] . '".
                     Without a Template Object TemplaVoila cannot map the XML content into HTML.
                     Please select a Template Object now.',
-                    1480961034367
+                    1480961034
                 );
             }
 
@@ -432,7 +432,7 @@ class FrontendController extends AbstractPlugin
                 throw new ObjectNotFoundException('
                     Couldn\'t find Template Object with UID "' . $row['tx_templavoila_to'] . '".
                     Please make sure a Template Object is accessible.',
-                    1480961100574
+                    1480961100
                 );
             }
 
@@ -650,7 +650,7 @@ class FrontendController extends AbstractPlugin
             $this->frontendController->register['tx_templavoila_pi1.current_field'] = $key;
 
             // Array/Section:
-            if ($DSelements[$key]['type'] === 'array') {
+            if ($DSelements[$key]['type'] === 'array' || $DSelements[$key]['tx_templavoila']['type'] === 'array') {
                 /* no DS-childs: bail out
                  * no EL-childs: progress (they may all be TypoScript elements without visual representation)
                  */

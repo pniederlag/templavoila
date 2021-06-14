@@ -688,6 +688,12 @@ class ElementController extends AbstractModuleController implements Configurable
         if (is_array($inDS)) {
             $this->convertTceFormStringToArrayRecursive($inDS);
 
+            //allow removing items from config, which would be prevented by merging old and new one
+            $configPath = str_replace(['[', ']'], ['/', ''], trim($DS_element, '[')) . '/TCEforms/config';
+            if (ArrayUtility::isValidPath($dataStructure, $configPath)) {
+                $dataStructure = ArrayUtility::removeByPath($dataStructure, $configPath);
+            }
+
             ArrayUtility::mergeRecursiveWithOverrule($dataStructure, $inDS);
 
             $this->streamlineStructureRecursive($dataStructure);
@@ -745,7 +751,7 @@ class ElementController extends AbstractModuleController implements Configurable
                 unset($value['type'], $value['section']);
 
                 if ($value['tx_templavoila']['type'] === 'section') {
-                    $value['section'] = 1;
+                    $value['section'] = '1';
 
                     /*
                      * Whenever a section is created/updated and it does not have any children,
@@ -911,7 +917,7 @@ class ElementController extends AbstractModuleController implements Configurable
         if ((int)$uid <= 0) {
             throw new \InvalidArgumentException(
                 static::getLanguageService()->getLL('errorNoUidFound'),
-                1479981093372
+                1479981093
             );
         }
 
@@ -920,7 +926,7 @@ class ElementController extends AbstractModuleController implements Configurable
         if (!is_array($row)) {
             throw new \LogicException(
                 static::getLanguageService()->getLL('errorNoTOfound'),
-                1479981243520
+                1479981243
             );
         }
 

@@ -84,7 +84,7 @@ class LlViewHelper extends AbstractViewHelper implements CompilableInterface
         $arguments = $arguments['arguments'];
 
         if ((string)$index === '') {
-            throw new InvalidVariableException('An argument "index" needs to be provided', 1467720203023);
+            throw new InvalidVariableException('An argument "index" needs to be provided', 1467720203);
         }
 
         $value = sprintf(static::getLanguageService()->getLL($index), $arguments);

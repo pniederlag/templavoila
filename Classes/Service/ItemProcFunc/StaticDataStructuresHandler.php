@@ -22,6 +22,8 @@ use Schnitzler\Templavoila\Traits\DatabaseConnection;
 use Schnitzler\Templavoila\Traits\LanguageService;
 use TYPO3\CMS\Backend\Form\FormDataProvider\TcaSelectItems;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
+use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Frontend\Page\PageRepository;
@@ -74,10 +76,26 @@ class StaticDataStructuresHandler
         foreach ($dsList as $dsObj) {
             /** @var AbstractDataStructure $dsObj */
             if ($dsObj->isPermittedForUser($params['row'], $removeDSItems)) {
+
+                $iconIdentifier = 'extensions-templavoila-type-fce';
+                if ($dsObj->getIcon()) {
+                    $iconIdentifier .= $dsObj->getKey();
+
+                    /** @var IconRegistry $iconRegistry */
+                    $iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
+                    $iconRegistry->registerIcon(
+                        $iconIdentifier,
+                        BitmapIconProvider::class,
+                        [
+                            'source' => $dsObj->getIcon()
+                        ]
+                    );
+                }
+
                 $params['items'][] = [
                     $dsObj->getLabel(),
                     $dsObj->getKey(),
-                    $dsObj->getIcon()
+                    $iconIdentifier
                 ];
             }
         }
@@ -154,10 +172,26 @@ class StaticDataStructuresHandler
         foreach ($dsList as $dsObj) {
             /** @var AbstractDataStructure $dsObj */
             if ($dsObj->isPermittedForUser($params['row'], $removeDSItems)) {
+
+                $iconIdentifier = 'extensions-templavoila-type-fce';
+                if ($dsObj->getIcon()) {
+                    $iconIdentifier .= $dsObj->getKey();
+
+                    /** @var IconRegistry $iconRegistry */
+                    $iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
+                    $iconRegistry->registerIcon(
+                        $iconIdentifier,
+                        BitmapIconProvider::class,
+                        [
+                            'source' => $dsObj->getIcon()
+                        ]
+                    );
+                }
+
                 $params['items'][] = [
                     $dsObj->getLabel(),
                     $dsObj->getKey(),
-                    $dsObj->getIcon()
+                    $iconIdentifier
                 ];
             }
         }
@@ -316,7 +350,7 @@ class StaticDataStructuresHandler
         }
 
         if ($storagePid === 0) {
-            throw new UndefinedStorageFolderException('Storage folder is not defined', 1492703523758);
+            throw new UndefinedStorageFolderException('Storage folder is not defined', 1492703523);
         }
 
         return $storagePid;

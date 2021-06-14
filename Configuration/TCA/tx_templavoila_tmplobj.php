@@ -51,7 +51,7 @@ return [
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_templavoila_tmplobj',
                 'foreign_table_where' => 'AND tx_templavoila_tmplobj.parent=0 AND tx_templavoila_tmplobj.uid!=\'###REC_FIELD_uid###\' ORDER BY tx_templavoila_tmplobj.title',
-                'showIconTable' => true,
+                'showIconTable' => false,
                 'items' => [
                     ['', 0]
                 ]
@@ -65,7 +65,7 @@ return [
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_templavoila_tmplobj',
                 'foreign_table_where' => 'AND tx_templavoila_tmplobj.parent=0 AND tx_templavoila_tmplobj.uid!=\'###REC_FIELD_uid###\' ORDER BY tx_templavoila_tmplobj.title',
-                'showIconTable' => true,
+                'showIconTable' => false,
                 'items' => [
                     ['', 0]
                 ]
